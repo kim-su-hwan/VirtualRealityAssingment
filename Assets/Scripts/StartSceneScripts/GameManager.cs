@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
     //싱글톤
     public static GameManager instance;
     //시간관련
-    public float time = 600.0f;
-    public float re_time = 600.0f;
+    public float time = 0.0f;
+    public float re_time = 0.0f;
     //점수관련
     [HideInInspector] public int score = 0;
+    [HideInInspector] public bool isColorBlind = false;
+
 
     private void Awake()
     {
@@ -42,5 +44,10 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
+    }
+
+    public void LoadGamePlayScene()
+    {
+        SceneManager.LoadScene("GamePlayScene");
     }
 }
