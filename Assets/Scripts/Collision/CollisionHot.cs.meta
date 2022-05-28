@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 5af26c359b1111c40a7504dcda62023c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - PW_cup01: {fileID: 2003871597829542631, guid: 2b1d0710585ffaa4bad3e39b54695970,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
