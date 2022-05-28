@@ -51,6 +51,9 @@ namespace PW
 
         #endregion
 
+        [SerializeField]
+        public GameObject myEspresso;
+
         //Drink prefab created from the product manager
         public GameObject cupType;
 
@@ -111,6 +114,11 @@ namespace PW
         {
             if (canFillCup)
             {
+                StartFillingStep();
+            }
+            else
+            {
+                UnSetTheCup();
                 StartFillingStep();
             }
         }
@@ -218,9 +226,12 @@ namespace PW
                 }
 
             }
-
             OnFillEnded();
-
+            GameObject esc = transform.Find("cupSpot").GetChild(0).gameObject;
+            Transform escp = esc.transform;
+            Destroy(esc, 0.0f);
+            Debug.Log(escp);
+            Instantiate(myEspresso, escp.position, escp.rotation);
         }
 
 
