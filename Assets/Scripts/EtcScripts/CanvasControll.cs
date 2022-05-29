@@ -46,8 +46,16 @@ public class CanvasControll : MonoBehaviour
         UISet[uiIndex.Peek()].SetActive(true);
     }
 
-    public void Exit()
+    public void OffCanvas(GameObject canvas)
     {
-        SceneManager.LoadScene("SchoolScene");
+        canvas.SetActive(false);
     }
+
+    public void OnCanvasAgain(GameObject canvas)
+    {
+        canvas.SetActive(true);
+    }
+
+
+
 }

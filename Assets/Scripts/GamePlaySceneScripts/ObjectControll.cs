@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObjectControll : MonoBehaviour
 {
     public static ObjectControll objcon_instance;
+    [SerializeField] private GameObject iceCup;
+
     private void Awake()
     {
         if (objcon_instance == null)
@@ -16,9 +18,9 @@ public class ObjectControll : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    public void InstantiateGameObj(GameObject obj, GameObject location)
+    public void InstantiateIceCup( GameObject location)
     {
-        Instantiate(obj, new Vector3(location.transform.position.x,
+        Instantiate(iceCup, new Vector3(location.transform.position.x,
             location.transform.position.y, location.transform.position.z), Quaternion.identity);
     }
 
