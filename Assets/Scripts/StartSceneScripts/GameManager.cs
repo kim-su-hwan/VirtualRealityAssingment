@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     void TimeCountUp()
     {
-        time -= Time.deltaTime;
+        time += Time.deltaTime;
     }
 
     public void AddScore(int amount)
