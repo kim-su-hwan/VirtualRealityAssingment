@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int score = 0;
     [HideInInspector] public bool isColorBlind = false;
 
+    private bool isGameStart = false;
+
 
     private void Awake()
     {
@@ -32,14 +34,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        TimeCountUp();
     }
 
 
-    void TimeCountUp()
-    {
-        time += Time.deltaTime;
-    }
 
     public void AddScore(int amount)
     {

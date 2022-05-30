@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5382b8bbcb2ba4b4ebe2855e0aae06ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iceobj: {fileID: 0}
+  iceobj: {fileID: 693417180144925335, guid: 42be72229f19dde45a5817b91b0039a5, type: 3}
 --- !u!114 &8314004002806019807
 MonoBehaviour:
   m_ObjectHideFlags: 0

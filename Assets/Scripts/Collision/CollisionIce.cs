@@ -13,22 +13,25 @@ public class CollisionIce : MonoBehaviour
 
     void Start()
     {
-        //mesh = transform.Find("fluid").GetComponent<MeshRenderer>();
+        mesh = transform.Find("fluid").GetComponent<MeshRenderer>();
         mat = mesh.material;
         Debug.Log(mat);
+        Debug.Log(transform.Find("fluid").gameObject.name);
+        Debug.Log(is_step);
     }
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log(transform.position);
         if (!(collision.gameObject.name == "Plane"))
         {
+            Debug.Log(is_step);
             // 빈 컵인 경우(step0), Ice 오브젝트와 충돌시 컵 안에(Vector3로 직접 좌표 넣어줌) IceInCup 오브젝트 생성
             if (collision.gameObject.name == "Ice" && is_step == 0)
             {
                 Destroy(collision.gameObject, 0.0f);
-                
-                GameObject ice = Instantiate(iceobj, transform.position + new Vector3(-0.3f,-0.15f,0), Quaternion.identity);
-                ice.transform.parent=this.transform;
+
+                GameObject ice = Instantiate(iceobj, transform.position + new Vector3(-0.3f, -0.15f, 0), Quaternion.identity);
+                ice.transform.parent = this.transform;
                 is_step += 1;
             }
             // 얼음이 들어있는 경우(step1), Pot 오브젝트와 충돌시 투명했던 내용물이 color_water 색으로 바뀜

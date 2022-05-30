@@ -26,6 +26,11 @@ public class IvenSystem : MonoBehaviour
             Destroy(this.gameObject);
     }
 
+    private void Start()
+    {
+
+    }
+
     public void InitIven()
     {
         coffee = 0;
@@ -66,4 +71,6 @@ public class IvenSystem : MonoBehaviour
     {
         sprite++;
     }
+
+
 }
