@@ -6,7 +6,7 @@ public class ObjectControll : MonoBehaviour
 {
     public static ObjectControll objcon_instance;
     [SerializeField] private GameObject iceCup;
-
+    [SerializeField] private GameObject hotCup;
     private void Awake()
     {
         if (objcon_instance == null)
@@ -24,6 +24,10 @@ public class ObjectControll : MonoBehaviour
             location.transform.position.y, location.transform.position.z), Quaternion.identity);
     }
 
-
+    public void InstantiateHotCup(GameObject location)
+    {
+        Instantiate(hotCup, new Vector3(location.transform.position.x,
+            location.transform.position.y, location.transform.position.z), Quaternion.identity);
+    }
 
 }
