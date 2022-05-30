@@ -12,7 +12,7 @@ public class ButtonsManager : MonoBehaviour
     public GameObject settingsScreen;
 
     public GameObject colorBlindButton;
-    public GameObject homeButton;
+    public GameObject backButton;
 
     public void SelectStartButton()
     {
@@ -48,7 +48,7 @@ public class ButtonsManager : MonoBehaviour
         }
     }
 
-    public void SelectHomeButton()
+    public void SelectBackButton()
     {
         mainScreen.SetActive(true);
         settingsScreen.SetActive(false);
