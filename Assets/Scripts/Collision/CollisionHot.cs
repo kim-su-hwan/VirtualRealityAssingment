@@ -12,7 +12,7 @@ public class CollisionHot : MonoBehaviour
     Color color_coffee = new Color(77 / 255f, 54 / 255f, 56 /255f, 255 / 255f);
     void Start()
     {
-        mesh = transform.Find("fluid").GetComponent<MeshRenderer>();
+        //mesh = transform.Find("fluid").GetComponent<MeshRenderer>();
         mat = mesh.material;
         Debug.Log(mat);
     }

@@ -13,7 +13,7 @@ public class CollisionIce : MonoBehaviour
 
     void Start()
     {
-        mesh = transform.Find("fluid").GetComponent<MeshRenderer>();
+        //mesh = transform.Find("fluid").GetComponent<MeshRenderer>();
         mat = mesh.material;
         Debug.Log(mat);
     }
