@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     //싱글톤
     public static GameManager instance;
     //시간관련
+    public static bool onRecipes = false;
     public float time = 0.0f;
     public float re_time = 0.0f;
     //점수관련
