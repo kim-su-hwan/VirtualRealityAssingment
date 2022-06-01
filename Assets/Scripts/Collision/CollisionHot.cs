@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CollisionHot : MonoBehaviour
 {
+    int i = 0;
     MeshRenderer mesh;
     Material mat;
     bool is_filled = false;
@@ -35,5 +36,11 @@ public class CollisionHot : MonoBehaviour
                 Destroy(collision.gameObject, 0.0f);
             }
         }
+    }
+    void OnParticleCollision(GameObject other)
+    {
+        i += 1;
+        Debug.Log(i);
+        Debug.Log(other.name);
     }
 }

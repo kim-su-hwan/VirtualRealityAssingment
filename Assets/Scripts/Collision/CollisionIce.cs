@@ -15,16 +15,11 @@ public class CollisionIce : MonoBehaviour
     {
         mesh = transform.Find("fluid").GetComponent<MeshRenderer>();
         mat = mesh.material;
-        Debug.Log(mat);
-        Debug.Log(transform.Find("fluid").gameObject.name);
-        Debug.Log(is_step);
     }
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(transform.position);
         if (!(collision.gameObject.name == "Plane"))
         {
-            Debug.Log(is_step);
             // 빈 컵인 경우(step0), Ice 오브젝트와 충돌시 컵 안에(Vector3로 직접 좌표 넣어줌) IceInCup 오브젝트 생성
             if (collision.gameObject.name == "Ice" && is_step == 0)
             {
