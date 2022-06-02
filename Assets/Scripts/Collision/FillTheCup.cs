@@ -22,6 +22,10 @@ namespace PW
             {
                 ps.Play();
             }
+            else if (((transform.rotation.eulerAngles[0] >35 && transform.rotation.eulerAngles[0] <325) || (transform.rotation.eulerAngles[2] >35 && transform.rotation.eulerAngles[2] <325))&& ps.name == "espresso")
+            {
+                ps.Play();
+            }
             else
             {
                 ps.Stop();
