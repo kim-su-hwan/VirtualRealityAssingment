@@ -11,6 +11,7 @@ public class CollisionIce : MonoBehaviour
     bool is_Empty;
 
     GameObject beverage;
+    GameObject pointCalc;
     MeshRenderer mesh;
     Material mat;
 
@@ -19,7 +20,8 @@ public class CollisionIce : MonoBehaviour
     Vector3 scale;
 
     void Start()
-    {  
+    {
+        pointCalc = GameObject.Find("Scripts");
         is_Empty = true;
         seq.Add(-1);
         beverage = transform.Find("beverage").gameObject;
@@ -60,6 +62,13 @@ public class CollisionIce : MonoBehaviour
                 add_seq(Constant.coffee);
             }
             over_check(beverage.transform.localScale[1]);
+
+            if (collision.gameObject.name == "Submit")
+            {
+                pointCalc.GetComponent<PointCalc>().ScoreCalculation(arr, seq);
+                Destroy(transform.gameObject);
+                Debug.Log(pointCalc.GetComponent<PointCalc>().GetScore());
+            }
         }
     }
 

@@ -12,4 +12,7 @@ public class Constant : MonoBehaviour
     public const int coffee = 1;
     public const int ice = 2;
     public const int milk = 3;
+
+    public const int americano_ice = 1001;
+    public const int americano_hot = 1002;
 }

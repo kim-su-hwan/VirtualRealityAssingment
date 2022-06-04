@@ -8,18 +8,18 @@ public class CollisionHot : MonoBehaviour
     // 0: water, 1: coffee, 2: ice, 3: milk
     int[] arr = new int[4] {0, 0, 0, 0};
     List<int> seq = new List<int>();
-    bool is_Empty;
 
     GameObject beverage;
+    GameObject pointCalc;
+
     public GameObject obj;
     MeshRenderer mesh;
     Material mat;
 
     void Start()
     {
-        is_Empty = true;
         seq.Add(-1);
-
+        pointCalc = GameObject.Find("Scripts");
         beverage = transform.Find("beverage").gameObject;
         mesh = beverage.GetComponent<MeshRenderer>();
         mat = mesh.material;
@@ -40,6 +40,13 @@ public class CollisionHot : MonoBehaviour
                 add_seq(Constant.coffee);
             }
             over_check(beverage.transform.localPosition[1]);
+
+            if (collision.gameObject.name == "Submit")
+            {
+                pointCalc.GetComponent<PointCalc>().ScoreCalculation(arr, seq);
+                Destroy(transform.gameObject);
+                Debug.Log(pointCalc.GetComponent<PointCalc>().GetScore());
+            }
         }
     }
 
@@ -82,7 +89,6 @@ public class CollisionHot : MonoBehaviour
                 arr[Constant.milk] += 1;
                 add_seq(Constant.milk);
             }
-            is_Empty = false;
         }
     }
 

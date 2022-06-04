@@ -1,18 +1,121 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PointCalc : MonoBehaviour
 {
+    private static int totalScore;
+    private int defaultScore;
+    private int[] recipe;
+    private int[] sequence;
+
+    // 주문 리스트
+    private List<int> order;
+    private int beverage;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        totalScore = 0;
+        order = new List<int>();
+
+        // 테스트용
+        order.Add(1001);
+        order.Add(1002);
+    }
+    
+    public int ScoreCalculation(int[] cup, List<int> seq)
+    {
+        if(order.Count == 0)
+        {
+            Debug.Log("Empty Order List");
+            return 0;
+        }
+        beverage = order[0];
+
+        // 음료 하나당 최대 획득 가능 점수는 1000점
+        defaultScore = 1000;
+        if (beverage == Constant.americano_ice)
+        {
+            recipe = Recipe.americano_ice_recipe;
+            sequence = Recipe.americano_ice_seq;
+        }
+        else if (beverage == Constant.americano_hot)
+        {
+            recipe = Recipe.americano_hot_recipe;
+            sequence = Recipe.americano_hot_seq;
+        }
+
+        // 불필요한 재료가 들어간 경우 or 재료를 빼먹은 경우 원래 점수에서 -500점
+        for (int i = 0; i < recipe.Length; i++)
+        {
+            if (recipe[i]==0 && cup[i] != 0)
+            {
+                totalScore -= 500;
+                order.RemoveAt(0);
+                return -500;
+            }
+            if (recipe[i]!=0 && cup[i] == 0)
+            {
+                totalScore -= 500;
+                order.RemoveAt(0);
+                return -500;
+            }
+        }
+        // 물이 들어가는 음료의 경우, 적정량에서 벗어난 만큼 획득점수 감소
+        if (recipe[Constant.water] != 0)
+        {
+            defaultScore -= Math.Abs(recipe[Constant.water] - cup[Constant.water]);
+        }
+        // 우유가 들어가는 음료의 경우, 적정량에서 벗어난 만큼 획득점수 감소
+        if (recipe[Constant.milk] != 0)
+        {
+            defaultScore -= Math.Abs(recipe[Constant.milk] - cup[Constant.milk]);
+        }
+        // 샷이 들어가는 음료의 경우, 틀린 갯수 하나당 100점 획득점수 감소
+        if (recipe[Constant.coffee] != 0)
+        {
+            defaultScore -= (Math.Abs(recipe[Constant.coffee] - cup[Constant.coffee]) * 100);
+        }
+        // 얼음이 들어가는 음료의 경우, 틀린 갯수 하나당 100점 획득점수 감소
+        if (recipe[Constant.coffee] != 0)
+        {
+            defaultScore -= (Math.Abs(recipe[Constant.ice] - cup[Constant.ice]) * 100);
+        }
+
+        // 재조 순서가 틀린 경우, 100점 획득점수 감소
+        if (seq.Count != sequence.Length)
+        {
+            defaultScore -= 100;
+        }
+        else
+        {
+            for(int i = 0; i < sequence.Length; i++)
+            {
+                if (seq[i] != sequence[i])
+                {
+                    defaultScore -= 100;
+                    break;
+                }
+            }
+        }
+        totalScore += defaultScore;
+        order.RemoveAt(0);
+        return defaultScore;
     }
 
-    // Update is called once per frame
-    void Update()
+    // 주문 추가
+    public void AddOrder(int n)
     {
-        
+        order.Add(n);
     }
+
+    // total 점수 얻어오기
+    public int GetScore()
+    {
+        return totalScore;
+    }
+
+
 }
