@@ -6,20 +6,20 @@ using System;
 public class CollisionHot : MonoBehaviour
 {
     // 0: water, 1: coffee, 2: ice, 3: milk
-    int[] list = new int[4] {0, 0, 0, 0};
-    bool is_Empty = true;
+    int[] arr = new int[4] {0, 0, 0, 0};
+    List<int> seq = new List<int>();
+    bool is_Empty;
 
     GameObject beverage;
     public GameObject obj;
     MeshRenderer mesh;
     Material mat;
 
-    Color color_water = new Color(118 / 255f, 255 / 255f, 255 / 255f, 70 / 255f);
-    Color color_coffee = new Color(77 / 255f, 54 / 255f, 56 / 255f, 255 / 255f);
-    Color color_milk = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
-
     void Start()
     {
+        is_Empty = true;
+        seq.Add(-1);
+
         beverage = transform.Find("beverage").gameObject;
         mesh = beverage.GetComponent<MeshRenderer>();
         mat = mesh.material;
@@ -33,12 +33,13 @@ public class CollisionHot : MonoBehaviour
             // Espresso machine 클릭시 Espresso(Clone) 오브젝트가 생성됨
             if (collision.gameObject.name == "Espresso" || collision.gameObject.name == "Espresso(Clone)")
             {
-                list[1] += 1;
-                mat.color = color_coffee;
+                arr[Constant.coffee] += 1;
+                mat.color = Constant.color_coffee;
                 beverage.transform.Translate(new Vector3(0, 0.02f, 0), Space.Self);
-                Debug.Log(list);
                 Destroy(collision.gameObject, 0.0f);
+                add_seq(Constant.coffee);
             }
+            over_check(beverage.transform.localPosition[1]);
         }
     }
 
@@ -52,30 +53,34 @@ public class CollisionHot : MonoBehaviour
         if (((x <= 45 && x >= 0) || (x >= 315 && x <= 360)) && ((z <= 45 && z >= 0) || (z >= 315 && z <= 360)))
         {
             beverage.transform.Translate(new Vector3(0, 0.0005f, 0), Space.Self);
-            Debug.Log(list[0]);
             over_check(beverage.transform.localPosition[1]);
 
             // 충돌한 Particle의 이름이 water인 경우
             // 컵에 커피나 우유가 들어있지 않은 경우에만 water_color값을 적용
-            if (list[1] < 1 && list[3] < 1 && other.name == "water")
+            if (other.name == "water")
             {
-                list[0] += 1;
-                mat.color = color_water;
+                if(arr[Constant.coffee] == 0 && arr[Constant.milk] == 0)
+                {
+                    mat.color = Constant.color_water;
+                }
+                arr[Constant.water] += 1;
+                add_seq(Constant.water);
             }
             // 충돌한 Particle의 이름이 milk인 경우
             // 커피가 들어있지 않은 경우에만 milk_color값을 적용
-            if (list[1] < 1 && other.name == "milk")
+            if (other.name == "milk")
             {
-                if (list[3] == 0)
+                if (arr[Constant.coffee] == 0 && arr[Constant.milk] == 0)
                 {
                     Destroy(beverage, 0.0f);
                     beverage = Instantiate(obj, beverage.transform.position, beverage.transform.rotation);
                     beverage.transform.parent = gameObject.transform;
                     mesh = beverage.GetComponent<MeshRenderer>();
                     mat = mesh.material;
+                    mat.color = Constant.color_milk;
                 }
-                list[3] += 1;
-                mat.color = color_milk;
+                arr[Constant.milk] += 1;
+                add_seq(Constant.milk);
             }
             is_Empty = false;
         }
@@ -88,6 +93,30 @@ public class CollisionHot : MonoBehaviour
         {
             Debug.Log("over");
             Destroy(transform.gameObject);
+        }
+    }
+
+    // 순서 저장
+    void add_seq(int n)
+    {
+        if (seq[seq.Count - 1] != n)
+        {
+            seq.Add(n);
+        }
+    }
+
+    void printList(List<int> l)
+    {
+        for (int i = 0; i < l.Count; i++)
+        {
+            Debug.Log("seq " + i.ToString() + ": " + l[i].ToString());
+        }
+    }
+    void printArr(int[] a)
+    {
+        for (int i = 0; i < a.Length; i++)
+        {
+            Debug.Log("index " + i.ToString() + " : " + a[i].ToString());
         }
     }
 }
