@@ -5,11 +5,12 @@ using System;
 
 public class CollisionHot : MonoBehaviour
 {
-    // 0: water, 1: coffee, 2: ice, 3: milk
-    int[] arr = new int[4] {0, 0, 0, 0};
+    // 0: water, 1: coffee, 2: ice, 3: milk, 4: strawberry, 5: sprite
+    int[] arr = new int[6] { 0, 0, 0, 0, 0, 0 };
     List<int> seq = new List<int>();
+    bool is_Empty;
 
-    GameObject beverage;
+GameObject beverage;
     GameObject pointCalc;
 
     public GameObject obj;
@@ -18,6 +19,7 @@ public class CollisionHot : MonoBehaviour
 
     void Start()
     {
+        is_Empty = true;
         seq.Add(-1);
         pointCalc = GameObject.Find("Scripts");
         beverage = transform.Find("beverage").gameObject;
@@ -39,6 +41,22 @@ public class CollisionHot : MonoBehaviour
                 Destroy(collision.gameObject, 0.0f);
                 add_seq(Constant.coffee);
             }
+            // Spoon 오브젝트와 충돌시 내용물이 color_strawberry 색으로 바뀜
+            else if (collision.gameObject.name == "Spoon")
+            {
+                if (!collision.gameObject.GetComponent<CollisionSpoon>().get_Empty())
+                {
+                    arr[Constant.strawberry] += 1;
+                    if (arr[Constant.coffee] == 0)
+                    {
+                        mat.color = Constant.color_strawberry;
+                    }
+                    beverage.transform.Translate(new Vector3(0, 0.01f, 0), Space.Self);
+                    add_seq(Constant.strawberry);
+                    collision.gameObject.GetComponent<CollisionSpoon>().set_Empty(true);
+                }
+            }
+            is_Empty = false;
             over_check(beverage.transform.localPosition[1]);
 
             if (collision.gameObject.name == "Submit")
@@ -47,6 +65,7 @@ public class CollisionHot : MonoBehaviour
                 Destroy(transform.gameObject);
                 Debug.Log(pointCalc.GetComponent<PointCalc>().GetScore());
             }
+
         }
     }
 
@@ -60,7 +79,6 @@ public class CollisionHot : MonoBehaviour
         if (((x <= 45 && x >= 0) || (x >= 315 && x <= 360)) && ((z <= 45 && z >= 0) || (z >= 315 && z <= 360)))
         {
             beverage.transform.Translate(new Vector3(0, 0.0005f, 0), Space.Self);
-            over_check(beverage.transform.localPosition[1]);
 
             // 충돌한 Particle의 이름이 water인 경우
             // 컵에 커피나 우유가 들어있지 않은 경우에만 water_color값을 적용
@@ -89,6 +107,18 @@ public class CollisionHot : MonoBehaviour
                 arr[Constant.milk] += 1;
                 add_seq(Constant.milk);
             }
+            // 충돌한 Particle의 이름이 sprite인 경우
+            if (other.name == "sprite")
+            {
+                if (is_Empty)
+                {
+                    mat.color = Constant.color_water;
+                }
+                arr[Constant.sprite] += 1;
+                add_seq(Constant.sprite);
+            }
+            is_Empty = false;
+            over_check(beverage.transform.localPosition[1]);
         }
     }
 

@@ -21,7 +21,7 @@ namespace PW
                 ps.Play();
                 time += Time.deltaTime;
             }
-            else if (transform.rotation.eulerAngles[0] >35 && transform.rotation.eulerAngles[0] <325 && ps.name == "milk")
+            else if (((transform.rotation.eulerAngles[0] >35 && transform.rotation.eulerAngles[0] <325) || (transform.rotation.eulerAngles[2] > 35 && transform.rotation.eulerAngles[2] < 325)) && (ps.name == "milk" || ps.name == "sprite"))
             {
                 ps.Play();
                 time += Time.deltaTime;

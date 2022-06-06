@@ -21,6 +21,8 @@ public class PointCalc : MonoBehaviour
         order = new List<int>();
 
         // 테스트용
+        order.Add(Constant.strawberryAid);
+        order.Add(Constant.strawberryAid);
         order.Add(1001);
         order.Add(1002);
     }
@@ -46,6 +48,11 @@ public class PointCalc : MonoBehaviour
             recipe = Recipe.americano_hot_recipe;
             sequence = Recipe.americano_hot_seq;
         }
+        else if (beverage == Constant.strawberryAid)
+        {
+            recipe = Recipe.strawberryAid_recipe;
+            sequence = Recipe.strawberryAid_seq;
+        }
 
         // 불필요한 재료가 들어간 경우 or 재료를 빼먹은 경우 원래 점수에서 -500점
         for (int i = 0; i < recipe.Length; i++)
@@ -66,28 +73,38 @@ public class PointCalc : MonoBehaviour
         // 물이 들어가는 음료의 경우, 적정량에서 벗어난 만큼 획득점수 감소
         if (recipe[Constant.water] != 0)
         {
-            defaultScore -= Math.Abs(recipe[Constant.water] - cup[Constant.water]);
+            defaultScore -= (Math.Abs(recipe[Constant.water] - cup[Constant.water])*2);
         }
         // 우유가 들어가는 음료의 경우, 적정량에서 벗어난 만큼 획득점수 감소
         if (recipe[Constant.milk] != 0)
         {
-            defaultScore -= Math.Abs(recipe[Constant.milk] - cup[Constant.milk]);
+            defaultScore -= (Math.Abs(recipe[Constant.milk] - cup[Constant.milk])*2);
         }
-        // 샷이 들어가는 음료의 경우, 틀린 갯수 하나당 100점 획득점수 감소
+        // 샷이 들어가는 음료의 경우, 틀린 갯수 하나당 200점 획득점수 감소
         if (recipe[Constant.coffee] != 0)
         {
-            defaultScore -= (Math.Abs(recipe[Constant.coffee] - cup[Constant.coffee]) * 100);
+            defaultScore -= (Math.Abs(recipe[Constant.coffee] - cup[Constant.coffee]) * 200);
         }
-        // 얼음이 들어가는 음료의 경우, 틀린 갯수 하나당 100점 획득점수 감소
-        if (recipe[Constant.coffee] != 0)
+        // 얼음이 들어가는 음료의 경우, 틀린 갯수 하나당 200점 획득점수 감소
+        if (recipe[Constant.ice] != 0)
         {
-            defaultScore -= (Math.Abs(recipe[Constant.ice] - cup[Constant.ice]) * 100);
+            defaultScore -= (Math.Abs(recipe[Constant.ice] - cup[Constant.ice]) * 200);
+        }
+        // 딸기청이 들어가는 음료의 경우, 틀린 갯수 하나당 200점 획득점수 감소
+        if (recipe[Constant.strawberry] != 0)
+        {
+            defaultScore -= (Math.Abs(recipe[Constant.strawberry] - cup[Constant.strawberry]) * 200);
+        }
+        // 사이다가 들어가는 음료의 경우, 적정량에서 벗어난 만큼 획득점수 감소
+        if (recipe[Constant.sprite] != 0)
+        {
+            defaultScore -= (Math.Abs(recipe[Constant.sprite] - cup[Constant.sprite])*2);
         }
 
-        // 재조 순서가 틀린 경우, 100점 획득점수 감소
+        // 재조 순서가 틀린 경우, 300점 획득점수 감소
         if (seq.Count != sequence.Length)
         {
-            defaultScore -= 100;
+            defaultScore -= 300;
         }
         else
         {
@@ -95,7 +112,7 @@ public class PointCalc : MonoBehaviour
             {
                 if (seq[i] != sequence[i])
                 {
-                    defaultScore -= 100;
+                    defaultScore -= 300;
                     break;
                 }
             }
