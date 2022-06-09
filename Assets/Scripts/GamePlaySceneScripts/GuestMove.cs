@@ -31,7 +31,6 @@ public class GuestMove : MonoBehaviour
 
     public void OrderClear()
     {
-
         GuestControll.guestcon_instance.isOrderClear = true;
         Destroy(this.gameObject);
     }

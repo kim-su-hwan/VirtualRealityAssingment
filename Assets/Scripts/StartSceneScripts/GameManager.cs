@@ -29,10 +29,6 @@ public class GameManager : MonoBehaviour
         else
             Destroy(this.gameObject);
     }
-    void Start()
-    {
-
-    }
 
     void Update()
     {
