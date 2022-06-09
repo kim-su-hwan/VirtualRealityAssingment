@@ -8,6 +8,7 @@ public class MenuSystem : MonoBehaviour
 
     public Queue<string> menu_name = new Queue<string>();
     [SerializeField] private TextMeshProUGUI menutext;
+    public string now_order;
     private void Start()
     {
         for (int i = 0; i < 5; i++)
@@ -20,7 +21,10 @@ public class MenuSystem : MonoBehaviour
     public void ShowMenu()
     {
         if (menu_name.Count > 0)
-            menutext.text = "Order Menu : " + menu_name.Dequeue();
+        {
+            now_order = menu_name.Dequeue();
+            menutext.text = "Order Menu : " + now_order;
+        }
     }
 
 
