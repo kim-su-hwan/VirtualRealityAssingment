@@ -14,12 +14,13 @@ public class MenuSystem : MonoBehaviour
         {
             menu_name.Enqueue(RandomMenu());
         }
-        ShowMenu();
+        //        ShowMenu();
     }
 
     public void ShowMenu()
     {
-        menutext.text = "Order Menu : " + menu_name.Dequeue();
+        if (menu_name.Count > 0)
+            menutext.text = "Order Menu : " + menu_name.Dequeue();
     }
 
 

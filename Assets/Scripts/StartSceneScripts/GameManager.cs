@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     //점수관련
     [HideInInspector] public int score = 0;
     [HideInInspector] public bool isColorBlind = false;
+   
 
     private bool isGameStart = false;
 
