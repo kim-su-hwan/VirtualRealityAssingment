@@ -21,7 +21,7 @@ public class CollisionIce : MonoBehaviour
 
     void Start()
     {
-        pointCalc = GameObject.Find("Scripts");
+        pointCalc = GameObject.Find("Point");
         is_Empty = true;
         seq.Add(-1);
         beverage = transform.Find("beverage").gameObject;
@@ -51,7 +51,7 @@ public class CollisionIce : MonoBehaviour
             }
             // Espresso 오브젝트와 충돌시 내용물이 color_coffee 색으로 바뀜
             // Espresso machine 클릭시 Espresso(Clone) 오브젝트가 생성됨
-            else if (collision.gameObject.name == "Espresso(Clone)")
+            else if (collision.gameObject.name == "Espresso" || collision.gameObject.name == "Espresso(Clone)")
             {
                 Destroy(collision.gameObject, 0.0f);
                 beverage.transform.localScale += new Vector3(0.08f, 0.2f, 0.08f);

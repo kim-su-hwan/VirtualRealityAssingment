@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class PointCalc : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PointCalc : MonoBehaviour
     private int defaultScore;
     private int[] recipe;
     private int[] sequence;
+
+    [SerializeField] private TextMeshProUGUI scoreUI;
 
     // 주문 리스트
     private List<int> order;
@@ -21,8 +24,6 @@ public class PointCalc : MonoBehaviour
         order = new List<int>();
 
         // 테스트용
-        order.Add(Constant.strawberryAid);
-        order.Add(Constant.strawberryAid);
         order.Add(1001);
         order.Add(1002);
     }
@@ -61,12 +62,14 @@ public class PointCalc : MonoBehaviour
             {
                 totalScore -= 500;
                 order.RemoveAt(0);
+                scoreUI.text = "Score : " + totalScore.ToString();
                 return -500;
             }
             if (recipe[i]!=0 && cup[i] == 0)
             {
                 totalScore -= 500;
                 order.RemoveAt(0);
+                scoreUI.text = "Score : " + totalScore.ToString();
                 return -500;
             }
         }
@@ -119,6 +122,7 @@ public class PointCalc : MonoBehaviour
         }
         totalScore += defaultScore;
         order.RemoveAt(0);
+        scoreUI.text = "Score : " + totalScore.ToString();
         return defaultScore;
     }
 

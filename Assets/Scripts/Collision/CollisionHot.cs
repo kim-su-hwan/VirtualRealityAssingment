@@ -21,7 +21,7 @@ GameObject beverage;
     {
         is_Empty = true;
         seq.Add(-1);
-        pointCalc = GameObject.Find("Scripts");
+        pointCalc = GameObject.Find("Point");
         beverage = transform.Find("beverage").gameObject;
         mesh = beverage.GetComponent<MeshRenderer>();
         mat = mesh.material;
