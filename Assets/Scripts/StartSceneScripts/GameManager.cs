@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        GameObject.Find("CVDFilter").GetComponent<CVDFilter>().SetBlind();
     }
 
 

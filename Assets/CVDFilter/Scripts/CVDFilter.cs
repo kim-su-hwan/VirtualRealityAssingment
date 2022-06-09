@@ -30,7 +30,30 @@ public class CVDFilter : MonoBehaviour
             ChangeProfile();
         }
     }
-
+    public void OnBlind()
+    {
+        if (visionType == ColorType.Protanopia)
+        {
+            visionType = ColorType.Normal;
+            GameManager.instance.isColorBlind = false;
+        }
+        else
+        {
+            visionType = ColorType.Protanopia;
+            GameManager.instance.isColorBlind = true;
+        }
+    }
+    public void SetBlind()
+    {
+        if(GameManager.instance.isColorBlind)
+        {
+            visionType = ColorType.Protanopia;
+        }
+        else
+        {
+            visionType = ColorType.Normal;
+        }
+    }
     void InitVolume()
     {
         postProcessVolume = GetComponent<PostProcessVolume>();
