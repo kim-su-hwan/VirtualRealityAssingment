@@ -10,7 +10,7 @@ public class Constant : MonoBehaviour
     public static readonly Color color_strawberry = new Color(255 / 255f, 42 / 255f, 42 / 255f, 255 / 255f);
     public static readonly Color color_latte = new Color(150 / 255f, 90 / 255f, 53 / 255f, 255 / 255f);
     public static readonly Color color_vanilla = new Color(209 / 255f, 209 / 255f, 155 / 255f, 255 / 255f);
-    public static readonly Color color_greenTea = new Color(0, 0, 0, 0);
+    public static readonly Color color_greenTea = new Color(148 / 255f, 229 / 255f, 165 / 255f, 255 / 255f);
 
     public const int water = 0;
     public const int coffee = 1;

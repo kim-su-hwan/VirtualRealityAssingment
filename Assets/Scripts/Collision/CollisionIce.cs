@@ -5,8 +5,8 @@ using System;
 
 public class CollisionIce : MonoBehaviour
 {
-    // 0: water, 1: coffee, 2: ice, 3: milk, 4: strawberry, 5: sprite, 6 : mocha, 7: vanilla
-    int[] arr = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
+    // 0: water, 1: coffee, 2: ice, 3: milk, 4: strawberry, 5: sprite, 6 : mocha, 7: vanilla, 8: greenTea
+    int[] arr = new int[9] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     List<int> seq = new List<int>();
     bool is_Empty;
 
@@ -83,6 +83,14 @@ public class CollisionIce : MonoBehaviour
                     is_Empty = false;
                 }
             }
+            else if(collision.gameObject.name == "greenTea")
+            {
+                Destroy(collision.gameObject, 0.0f);
+                mat.color = Constant.color_greenTea;
+                arr[Constant.greenTea] += 1;
+                add_seq(Constant.greenTea);
+                is_Empty = false;
+            }
             over_check(beverage.transform.localScale[1]);
 
             if (collision.gameObject.name == "Submit")
@@ -107,10 +115,9 @@ public class CollisionIce : MonoBehaviour
             beverage.transform.localScale += new Vector3(0.001f, 0.0025f, 0.001f);
 
             // 충돌한 Particle의 이름이 water인 경우
-            // 컵에 커피나 우유가 들어있지 않은 경우에만 water_color값을 적용
             if (other.name == "water")
             {
-                if(arr[Constant.coffee] == 0 && arr[Constant.milk] == 0)
+                if (arr[Constant.coffee] == 0 && arr[Constant.milk] == 0 && arr[Constant.strawberry] == 0 && arr[Constant.greenTea] == 0 && arr[Constant.vanilla] == 0 && arr[Constant.mocha] == 0)
                 {
                     mat.color = Constant.color_water;
                 }
@@ -118,10 +125,9 @@ public class CollisionIce : MonoBehaviour
                 add_seq(Constant.water);
             }
             // 충돌한 Particle의 이름이 milk인 경우
-            // 커피, 딸기청이 들어있지 않은 경우에만 milk_color값을 적용
             if (other.name == "milk")
             {
-                if (arr[Constant.coffee] == 0 && arr[Constant.milk] == 0 && arr[Constant.strawberry] == 0)
+                if (arr[Constant.coffee] == 0 && arr[Constant.milk] == 0 && arr[Constant.strawberry] == 0 && arr[Constant.greenTea] == 0)
                 {
                     scale = beverage.transform.localScale;
                     Destroy(beverage, 0.0f);
@@ -138,7 +144,7 @@ public class CollisionIce : MonoBehaviour
             // 충돌한 Particle의 이름이 sprite인 경우
             if (other.name == "sprite")
             {
-                if (is_Empty)
+                if (arr[Constant.coffee] == 0 && arr[Constant.milk] == 0 && arr[Constant.strawberry] == 0 && arr[Constant.greenTea] == 0 && arr[Constant.vanilla] == 0 && arr[Constant.mocha] == 0)
                 {
                     mat.color = Constant.color_water;
                 }

@@ -16,12 +16,7 @@ namespace PW
         }
         void Update()
         {
-            if (transform.rotation.eulerAngles[2] > 30 && ps.name=="water")
-            {
-                ps.Play();
-                time += Time.deltaTime;
-            }
-            else if (((transform.rotation.eulerAngles[0] >35 && transform.rotation.eulerAngles[0] <325) || (transform.rotation.eulerAngles[2] > 35 && transform.rotation.eulerAngles[2] < 325)) && (ps.name == "milk" || ps.name == "sprite" || ps.name == "mocha" || ps.name == "vanilla"))
+            if (((transform.rotation.eulerAngles[0] >35 && transform.rotation.eulerAngles[0] <325) || (transform.rotation.eulerAngles[2] > 35 && transform.rotation.eulerAngles[2] < 325)) && (ps.name == "milk" || ps.name == "sprite" || ps.name == "mocha" || ps.name == "vanilla" || ps.name == "water"))
             {
                 ps.Play();
                 time += Time.deltaTime;

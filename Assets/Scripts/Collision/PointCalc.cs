@@ -142,6 +142,11 @@ public class PointCalc : MonoBehaviour
         {
             defaultScore -= (Math.Abs(recipe[Constant.vanilla] - cup[Constant.vanilla]) * 2);
         }
+        // 녹차가루가 들어가는 음료의 경우, 틀린 갯수 하나당 200점 획득점수 감소
+        if (recipe[Constant.greenTea] != 0)
+        {
+            defaultScore -= (Math.Abs(recipe[Constant.greenTea] - cup[Constant.greenTea]) * 200);
+        }
 
         // 재조 순서가 틀린 경우, 300점 획득점수 감소
         if (seq.Count != sequence.Length)

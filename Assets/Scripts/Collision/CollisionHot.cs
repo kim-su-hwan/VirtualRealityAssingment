@@ -5,8 +5,8 @@ using System;
 
 public class CollisionHot : MonoBehaviour
 {
-    // 0: water, 1: coffee, 2: ice, 3: milk, 4: strawberry, 5: sprite, 6: mocha, 7: vanilla
-    int[] arr = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
+    // 0: water, 1: coffee, 2: ice, 3: milk, 4: strawberry, 5: sprite, 6: mocha, 7: vanilla, 8: greenTea
+    int[] arr = new int[9] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     List<int> seq = new List<int>();
     bool is_Empty;
 
