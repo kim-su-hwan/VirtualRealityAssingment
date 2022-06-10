@@ -14,15 +14,10 @@ public class GameManager : MonoBehaviour
     //점수관련
     [HideInInspector] public int score = 0;
     [HideInInspector] public bool isColorBlind = false;
-    GameObject pointCalc;
 
 
     private bool isGameStart = false;
 
-    void Start()
-    {
-        pointCalc = GameObject.Find("Point");
-    }
     private void Awake()
     {
         if (instance == null)
@@ -39,10 +34,7 @@ public class GameManager : MonoBehaviour
         GameObject.Find("CVDFilter").GetComponent<CVDFilter>().SetBlind();
     }
 
-    public void AddScore()
-    {
-        score = pointCalc.GetComponent<PointCalc>().GetScore();
-    }
+
 
     public void LoadGamePlayScene()
     {

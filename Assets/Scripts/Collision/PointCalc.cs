@@ -135,9 +135,7 @@ public class PointCalc : MonoBehaviour
     // total 점수 얻어오기
     public int GetScore()
     {
-        GameManager.instance.score = totalScore;
         return totalScore;
     }
-
 
 }

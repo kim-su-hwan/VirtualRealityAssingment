@@ -5,10 +5,10 @@ using TMPro;
 public class ScoreControll : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI score_text;
-
+    [SerializeField] private GameObject point;
     public void ShowScore()
     {
-        score_text.text = $"Score : {GameManager.instance.score}";
+        score_text.text = $"Score : {point.GetComponent<PointCalc>().GetScore()}";
         //사용시
         //GameObject.Find("Managers").GetComponent<ScoreControll>().ShowScore();
     }
