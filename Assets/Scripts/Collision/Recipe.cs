@@ -15,3 +15,12 @@ public class Recipe : MonoBehaviour
     public static readonly int[] strawberryAid_recipe = new int[6] { 0, 0, 1, 0, 1, 280 };
     public static readonly int[] strawberryAid_seq = new int[4] { -1, Constant.strawberry, Constant.ice, Constant.sprite };
 }
+
+
+// 레시피 요약
+
+// 아이스 아메리카노 : 얼음 -> 에스프레소 -> 물 
+// 핫 아메리카노 : 물 -> 에스프레소
+// 딸기 에이드 : 딸기청 -> 얼음 -> 사이다
+
+// ※주의 : 순서를 정확하게 지켜야 감점되지 않습니다.
