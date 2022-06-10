@@ -33,7 +33,7 @@ namespace PW
             // Particle 플레이 타임이 30초가 넘어가면 오브젝트 삭제
             if(time >= 30.0)
             {
-                Destroy(transform.gameObject);
+                //Destroy(transform.gameObject);
             }
         }
     }
