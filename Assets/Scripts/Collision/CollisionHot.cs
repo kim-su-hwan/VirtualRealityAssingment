@@ -5,8 +5,8 @@ using System;
 
 public class CollisionHot : MonoBehaviour
 {
-    // 0: water, 1: coffee, 2: ice, 3: milk, 4: strawberry, 5: sprite
-    int[] arr = new int[6] { 0, 0, 0, 0, 0, 0 };
+    // 0: water, 1: coffee, 2: ice, 3: milk, 4: strawberry, 5: sprite, 6: mocha
+    int[] arr = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
     List<int> seq = new List<int>();
     bool is_Empty;
 
@@ -36,8 +36,15 @@ public class CollisionHot : MonoBehaviour
             if (collision.gameObject.name == "Espresso" || collision.gameObject.name == "Espresso(Clone)")
             {
                 arr[Constant.coffee] += 1;
-                mat.color = Constant.color_coffee;
-                beverage.transform.Translate(new Vector3(0, 0.02f, 0), Space.Self);
+                if (arr[Constant.milk] != 0)
+                {
+                    mat.color = Constant.color_latte;
+                }
+                else
+                {
+                    mat.color = Constant.color_coffee;
+                }
+                beverage.transform.Translate(new Vector3(0, 0.04f, 0), Space.Self);
                 Destroy(collision.gameObject, 0.0f);
                 add_seq(Constant.coffee);
             }
@@ -65,7 +72,7 @@ public class CollisionHot : MonoBehaviour
                 Destroy(transform.gameObject);
                 Debug.Log(pointCalc.GetComponent<PointCalc>().GetScore());
                 GameObject.Find("Managers").GetComponent<ScoreControll>().ShowScore();
-                GameObject.Find("GuestGuest(Clone)").GetComponent<GuestMove>().OrderClear();
+                GameObject.Find("Guest(Clone)").GetComponent<GuestMove>().OrderClear();
             }
 
         }
@@ -118,6 +125,13 @@ public class CollisionHot : MonoBehaviour
                 }
                 arr[Constant.sprite] += 1;
                 add_seq(Constant.sprite);
+            }
+            // 충돌한 Particle의 이름이 mocha인 경우
+            if (other.name == "mocha")
+            {
+                mat.color = Constant.color_latte;
+                arr[Constant.mocha] += 1;
+                add_seq(Constant.mocha);
             }
             is_Empty = false;
             over_check(beverage.transform.localPosition[1]);

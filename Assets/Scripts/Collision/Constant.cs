@@ -8,6 +8,7 @@ public class Constant : MonoBehaviour
     public static readonly Color color_coffee = new Color(77 / 255f, 54 / 255f, 56 / 255f, 255 / 255f);
     public static readonly Color color_milk = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
     public static readonly Color color_strawberry = new Color(255 / 255f, 42 / 255f, 42 / 255f, 255 / 255f);
+    public static readonly Color color_latte = new Color(150 / 255f, 90 / 255f, 53 / 255f, 255 / 255f);
 
     public const int water = 0;
     public const int coffee = 1;
@@ -15,8 +16,11 @@ public class Constant : MonoBehaviour
     public const int milk = 3;
     public const int strawberry = 4;
     public const int sprite = 5;
+    public const int mocha = 6;
 
     public const int americano_ice = 1001;
     public const int americano_hot = 1002;
     public const int strawberryAid = 1003;
+    public const int mochaLatte_ice = 1004;
+    public const int mochaLatte_hot = 1005;
 }

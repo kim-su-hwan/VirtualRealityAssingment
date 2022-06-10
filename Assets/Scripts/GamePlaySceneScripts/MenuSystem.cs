@@ -34,7 +34,7 @@ public class MenuSystem : MonoBehaviour
 
     private string RandomMenu()
     {
-        int num = Random.Range(0, 3);
+        int num = Random.Range(0, 5);
         switch (num)
         {
             case 0:
@@ -47,9 +47,11 @@ public class MenuSystem : MonoBehaviour
                 pointCalc.GetComponent<PointCalc>().AddOrder(Constant.strawberryAid);
                 return "ICE Strawberry Ade";
             case 3:
+                pointCalc.GetComponent<PointCalc>().AddOrder(Constant.mochaLatte_ice);
                 return "ICE Mocha Latte";
             case 4:
-                return "ICE Vanilla Latte";
+                pointCalc.GetComponent<PointCalc>().AddOrder(Constant.mochaLatte_hot);
+                return "HOT Mocha Latte";
             case 5:
                 return "ICE GreenTea Latte";
             case 6:
@@ -59,7 +61,7 @@ public class MenuSystem : MonoBehaviour
             case 8:
                 return "HOT Vanilla Latte";
             case 9:
-                return "HOT Mocha Latte";
+                return "ICE Vanilla Latte";
             default:
                 return null;
         }

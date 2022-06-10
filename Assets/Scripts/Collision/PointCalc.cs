@@ -49,6 +49,16 @@ public class PointCalc : MonoBehaviour
             recipe = Recipe.strawberryAid_recipe;
             sequence = Recipe.strawberryAid_seq;
         }
+        else if (beverage == Constant.mochaLatte_ice)
+        {
+            recipe = Recipe.mochaLatte_ice_recipe;
+            sequence = Recipe.mochaLatte_ice_seq;
+        }
+        else if (beverage == Constant.mochaLatte_hot)
+        {
+            recipe = Recipe.mochaLatte_hot_recipe;
+            sequence = Recipe.mochaLatte_hot_seq;
+        }
 
         // 불필요한 재료가 들어간 경우 or 재료를 빼먹은 경우 원래 점수에서 -500점
         for (int i = 0; i < recipe.Length; i++)
@@ -97,6 +107,11 @@ public class PointCalc : MonoBehaviour
         if (recipe[Constant.sprite] != 0)
         {
             defaultScore -= (Math.Abs(recipe[Constant.sprite] - cup[Constant.sprite])*2);
+        }
+        // 모카시럽이 들어가는 음료의 경우, 적정량에서 벗어난 만큼 획득점수 감소
+        if (recipe[Constant.mocha] != 0)
+        {
+            defaultScore -= (Math.Abs(recipe[Constant.mocha] - cup[Constant.mocha]) * 2);
         }
 
         // 재조 순서가 틀린 경우, 300점 획득점수 감소
