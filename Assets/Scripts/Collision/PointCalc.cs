@@ -59,7 +59,31 @@ public class PointCalc : MonoBehaviour
             recipe = Recipe.mochaLatte_hot_recipe;
             sequence = Recipe.mochaLatte_hot_seq;
         }
-
+        else if (beverage == Constant.cafeLatte_ice)
+        {
+            recipe = Recipe.cafeLatte_ice_recipe;
+            sequence = Recipe.cafeLatte_ice_seq;
+        }
+        else if (beverage == Constant.cafeLatte_hot)
+        {
+            recipe = Recipe.cafeLatte_hot_recipe;
+            sequence = Recipe.cafeLatte_hot_seq;
+        }
+        else if (beverage == Constant.vanillaLatte_ice)
+        {
+            recipe = Recipe.vanillaLatte_ice_recipe;
+            sequence = Recipe.vanillaLatte_ice_seq;
+        }
+        else if (beverage == Constant.vanillaLatte_hot)
+        {
+            recipe = Recipe.vanillaLatte_hot_recipe;
+            sequence = Recipe.vanillaLatte_hot_seq;
+        }
+        else
+        {
+            recipe = Recipe.greenTeaLatte_ice_recipe;
+            sequence = Recipe.greenTeaLatte_ice_seq;
+        }
         // 불필요한 재료가 들어간 경우 or 재료를 빼먹은 경우 원래 점수에서 -500점
         for (int i = 0; i < recipe.Length; i++)
         {
@@ -112,6 +136,11 @@ public class PointCalc : MonoBehaviour
         if (recipe[Constant.mocha] != 0)
         {
             defaultScore -= (Math.Abs(recipe[Constant.mocha] - cup[Constant.mocha]) * 2);
+        }
+        // 바닐라시럽이 들어가는 음료의 경우, 적정량에서 벗어난 만큼 획득점수 감소
+        if (recipe[Constant.mocha] != 0)
+        {
+            defaultScore -= (Math.Abs(recipe[Constant.vanilla] - cup[Constant.vanilla]) * 2);
         }
 
         // 재조 순서가 틀린 경우, 300점 획득점수 감소
