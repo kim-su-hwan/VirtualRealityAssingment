@@ -31,21 +31,29 @@ public class MenuSystem : MonoBehaviour
 
     private string RandomMenu()
     {
-        int num = Random.Range(0, 6);
+        int num = Random.Range(0, 10);
         switch (num)
         {
             case 0:
-                return "Americano";
+                return "ICE Americano";
             case 1:
-                return "Caffee Latte";
+                return "ICE Caffee Latte";
             case 2:
-                return "Vanilla Latte";
+                return "ICE Vanilla Latte";
             case 3:
-                return "Mocha Latte";
+                return "ICE Mocha Latte";
             case 4:
-                return "Strawberry Ade";
+                return "ICE Strawberry Ade";
             case 5:
-                return "GreenTea Latte";
+                return "ICE GreenTea Latte";
+            case 6:
+                return "Hot Americano";
+            case 7:
+                return "HOT Caffee Latte";
+            case 8:
+                return "HOT Vanilla Latte";
+            case 9:
+                return "HOT Mocha Latte";
             default:
                 return null;
         }
