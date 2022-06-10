@@ -14,18 +14,13 @@ public class PointCalc : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreUI;
 
     // 주문 리스트
-    private List<int> order;
+    private static List<int> order = new List<int>();
     private int beverage;
 
     // Start is called before the first frame update
     void Start()
     {
         totalScore = 0;
-        order = new List<int>();
-
-        // 테스트용
-        order.Add(1001);
-        order.Add(1002);
     }
     
     public int ScoreCalculation(int[] cup, List<int> seq)
@@ -129,6 +124,7 @@ public class PointCalc : MonoBehaviour
     // 주문 추가
     public void AddOrder(int n)
     {
+        Debug.Log(n);
         order.Add(n);
     }
 

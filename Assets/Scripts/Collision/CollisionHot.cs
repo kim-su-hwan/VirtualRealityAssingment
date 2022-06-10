@@ -10,7 +10,7 @@ public class CollisionHot : MonoBehaviour
     List<int> seq = new List<int>();
     bool is_Empty;
 
-GameObject beverage;
+    GameObject beverage;
     GameObject pointCalc;
 
     public GameObject obj;
