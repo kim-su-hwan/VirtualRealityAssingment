@@ -65,6 +65,7 @@ GameObject beverage;
                 Destroy(transform.gameObject);
                 Debug.Log(pointCalc.GetComponent<PointCalc>().GetScore());
                 GameObject.Find("Managers").GetComponent<ScoreControll>().ShowScore();
+                GameObject.Find("GuestGuest(Clone)").GetComponent<GuestMove>().OrderClear();
             }
 
         }

@@ -84,6 +84,7 @@ public class CollisionIce : MonoBehaviour
                 Destroy(transform.gameObject);
                 Debug.Log(pointCalc.GetComponent<PointCalc>().GetScore());
                 GameObject.Find("Managers").GetComponent<ScoreControll>().ShowScore();
+                GameObject.Find("Guest(Clone)").GetComponent<GuestMove>().OrderClear();
             }
         }
     }

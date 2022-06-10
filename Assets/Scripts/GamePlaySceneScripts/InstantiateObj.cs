@@ -17,7 +17,6 @@ public class InstantiateObj : MonoBehaviour
 
     public void InitMilk()
     {
-        
         Instantiate(milk, milk_respon.transform);
     }
     public void InitSprite()
