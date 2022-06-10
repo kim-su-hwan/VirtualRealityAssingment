@@ -14,7 +14,8 @@ public class RecipesManager : MonoBehaviour
     public GameObject caffeLatte;
     public GameObject vanillaLatte;
     public GameObject mochaLatte;
-    public GameObject ade;
+    public GameObject strawberryAde;
+    public GameObject greenTeaLatte;
 
     public GameObject recipePaper;
     // Start is called before the first frame update
