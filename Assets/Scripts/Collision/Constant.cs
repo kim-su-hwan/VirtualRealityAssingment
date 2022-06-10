@@ -23,4 +23,6 @@ public class Constant : MonoBehaviour
     public const int strawberryAid = 1003;
     public const int mochaLatte_ice = 1004;
     public const int mochaLatte_hot = 1005;
+    public const int cafeLatte_ice = 1006;
+    public const int cafeLatte_hot = 1007;
 }
