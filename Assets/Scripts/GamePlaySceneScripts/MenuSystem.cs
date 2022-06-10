@@ -47,7 +47,7 @@ public class MenuSystem : MonoBehaviour
             case 5:
                 return "ICE GreenTea Latte";
             case 6:
-                return "Hot Americano";
+                return "HOT Americano";
             case 7:
                 return "HOT Caffee Latte";
             case 8:

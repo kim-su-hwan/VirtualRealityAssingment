@@ -64,6 +64,7 @@ GameObject beverage;
                 pointCalc.GetComponent<PointCalc>().ScoreCalculation(arr, seq);
                 Destroy(transform.gameObject);
                 Debug.Log(pointCalc.GetComponent<PointCalc>().GetScore());
+                GameObject.Find("Managers").GetComponent<ScoreControll>().ShowScore();
             }
 
         }
