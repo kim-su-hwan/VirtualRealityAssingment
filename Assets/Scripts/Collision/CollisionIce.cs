@@ -34,7 +34,7 @@ public class CollisionIce : MonoBehaviour
         if (!(collision.gameObject.name == "Plane"))
         {
             // Ice 오브젝트와 충돌시 컵 안에(Vector3로 직접 좌표 넣어줌) IceInCup 오브젝트 생성
-            if (collision.gameObject.name == "Ice")
+            if (collision.gameObject.name == "Ice"|| collision.gameObject.name == "Ice(Clone)")
             {
                 // 컵안에 다른 내용물이 있었던 경우 양이 불어나도록 조정
                 if (!is_Empty)
@@ -183,6 +183,7 @@ public class CollisionIce : MonoBehaviour
         if (n >= 1.035)
         {
             Debug.Log("over");
+            GuestControll.guestcon_instance.isOrderClear = true;
             Destroy(transform.gameObject);
         }
     }

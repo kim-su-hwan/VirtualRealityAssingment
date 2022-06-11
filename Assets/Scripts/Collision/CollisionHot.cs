@@ -158,6 +158,7 @@ public class CollisionHot : MonoBehaviour
         if (n >= 0.02)
         {
             Debug.Log("over");
+            GuestControll.guestcon_instance.isOrderClear = true;
             Destroy(transform.gameObject);
         }
     }
