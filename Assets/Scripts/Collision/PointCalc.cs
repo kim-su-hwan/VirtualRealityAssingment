@@ -38,26 +38,32 @@ public class PointCalc : MonoBehaviour
         {
             recipe = Recipe.americano_ice_recipe;
             sequence = Recipe.americano_ice_seq;
+
         }
         else if (beverage == Constant.americano_hot)
         {
             recipe = Recipe.americano_hot_recipe;
             sequence = Recipe.americano_hot_seq;
+
+
         }
         else if (beverage == Constant.strawberryAid)
         {
             recipe = Recipe.strawberryAid_recipe;
             sequence = Recipe.strawberryAid_seq;
+
         }
         else if (beverage == Constant.mochaLatte_ice)
         {
             recipe = Recipe.mochaLatte_ice_recipe;
             sequence = Recipe.mochaLatte_ice_seq;
+
         }
         else if (beverage == Constant.mochaLatte_hot)
         {
             recipe = Recipe.mochaLatte_hot_recipe;
             sequence = Recipe.mochaLatte_hot_seq;
+
         }
         else if (beverage == Constant.cafeLatte_ice)
         {

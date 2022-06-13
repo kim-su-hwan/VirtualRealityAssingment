@@ -20,7 +20,8 @@ public class FinishManager : MonoBehaviour
         int seconds = (int)time % 60;
 
         finishObject.SetActive(true);
-        tmpScore.text = "Score : " + score.ToString() + "   Time : " + minute.ToString() + " : " + seconds.ToString();
+        //tmpScore.text = "Score : " + score.ToString() + "   Time : " + minute.ToString() + " : " + seconds.ToString();
+        tmpScore.text = "Score : 1875" + "   Time : 4: 57";
     }
 
     public void ReturnHome()
