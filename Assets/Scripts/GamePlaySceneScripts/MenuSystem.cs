@@ -11,12 +11,15 @@ public class MenuSystem : MonoBehaviour
     public string now_order;
     GameObject pointCalc;
 
+    int i = 0;
+
     private void Start()
     {
         pointCalc = GameObject.Find("Point");
         for (int i = 0; i < 5; i++)
         {
             menu_name.Enqueue(RandomMenu());
+
         }
         //        ShowMenu();
     }
@@ -34,7 +37,8 @@ public class MenuSystem : MonoBehaviour
 
     private string RandomMenu()
     {
-        int num = Random.Range(0, 10);
+        //int num = Random.Range(0, 10);
+        int num = i++;
         switch (num)
         {
             case 0:

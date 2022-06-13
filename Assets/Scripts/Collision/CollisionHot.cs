@@ -159,6 +159,8 @@ public class CollisionHot : MonoBehaviour
         {
             Debug.Log("over");
             GuestControll.guestcon_instance.isOrderClear = true;
+            GameObject.Find("Guest(Clone)").GetComponent<GuestMove>().OrderClear();
+
             Destroy(transform.gameObject);
         }
     }

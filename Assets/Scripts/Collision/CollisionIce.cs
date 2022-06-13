@@ -85,7 +85,7 @@ public class CollisionIce : MonoBehaviour
             }
             else if(collision.gameObject.name == "greenTea")
             {
-                Destroy(collision.gameObject, 0.0f);
+                //Destroy(collision.gameObject, 0.0f);
                 mat.color = Constant.color_greenTea;
                 arr[Constant.greenTea] += 1;
                 add_seq(Constant.greenTea);
@@ -184,6 +184,7 @@ public class CollisionIce : MonoBehaviour
         {
             Debug.Log("over");
             GuestControll.guestcon_instance.isOrderClear = true;
+            GameObject.Find("Guest(Clone)").GetComponent<GuestMove>().OrderClear();
             Destroy(transform.gameObject);
         }
     }
